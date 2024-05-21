@@ -52,9 +52,9 @@ Read the [Quick introduction](/docs/quickintro.md) to the project.
 
 ## Build status
 
-| Type | Branch | Status |
-| ---  | ------ | ------ |
-| CI   | master | ![.github/workflows/ci.yml](https://github.com/microsoft/CyberBattleSim/workflows/.github/workflows/ci.yml/badge.svg) |
+| Type         | Branch | Status                                                                                                                                          |
+| ------------ | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| CI           | master | ![.github/workflows/ci.yml](https://github.com/microsoft/CyberBattleSim/workflows/.github/workflows/ci.yml/badge.svg)                           |
 | Docker image | master | ![.github/workflows/build-container.yml](https://github.com/microsoft/CyberBattleSim/workflows/.github/workflows/build-container.yml/badge.svg) |
 
 ## Benchmark
@@ -250,10 +250,11 @@ The following code shows how to create an instance of the OpenAI Gym environment
 break the 80% network availability SLA (`maintain_sla=0.80`), while the network is being monitored and protected by the basic probalistically-modelled defender (`defender_agent=ScanAndReimageCompromisedMachines`):
 
 ```python
-import cyberbattle._env.cyberbattle_env
+import gym
+from cyberbattle._env.cyberbattle_env import AttackerGoal, DefenderConstraint
+from cyberbattle._env.defender import ScanAndReimageCompromisedMachines
 
-cyberbattlechain_defender =
-  gym.make('CyberBattleChain-v0',
+cyberbattlechain_defender = gym.make('CyberBattleChain-v0',
       size=10,
       attacker_goal=AttackerGoal(
           own_atleast=0,
@@ -295,7 +296,7 @@ See also the [wiki for more ideas](https://github.com/microsoft/CyberBattleGym/w
 
 ```bibtex
 @misc{msft:cyberbattlesim,
-  Author = {Microsoft Defender Research Team.}
+  Author = {Microsoft Defender Research Team.},
   Note = {Created by Christian Seifert, Michael Betser, William Blum, James Bono, Kate Farris, Emily Goren, Justin Grana, Kristian Holsheimer, Brandon Marken, Joshua Neil, Nicole Nichols, Jugal Parikh, Haoran Wei.},
   Publisher = {GitHub},
   Howpublished = {\url{https://github.com/microsoft/cyberbattlesim}},
